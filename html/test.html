@@ -1,0 +1,125 @@
+<html>
+
+ <head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <title>测试页面</title>
+
+ </head>
+
+ <body>
+
+ <div onClick="window.uoozi.jsCallWebView()">无参数JS调用java代码</div>
+
+ <br/>
+
+ <div onClick="alert(1111)"><u>内部弹框</u></div>
+
+ <div onClick="testFunc()"><u>方法调用</u></div>
+
+ <br/>
+
+ <div onClick="window.uoozi.jsCallWebView('第一个参数','第二个参数')">android含参数调用java代码</div>
+
+ <div onClick="window.webkit.messageHandlers.appSetAlias.postMessage('我是ios参数')">ios含参数调用java代码</div>
+
+ <br/>
+
+ <br/>
+
+ <div id="content">内容显示 <a href="jump.html" target="_self">跳转新页面jump.html</a></div>
+
+ </body>
+
+ <script type="text/javascript">
+
+  var isAndroid;//是否是android设备
+
+  window.onload = function(){
+
+  if (/android/i.test(navigator.userAgent)){
+
+  //判断为android
+
+  isAndroid=true;
+
+  }else if(/ipad|iphone/i.test(navigator.userAgent)){
+
+  isAndroid=false;
+
+  }else{
+
+  isAndroid=false;
+
+  }
+
+  }
+
+  //Java调用JS代码无参数
+
+  function javacalljs(){
+
+  document.getElementById("content").innerHTML +=
+
+  "<br\>java调用了js函数";
+
+  }
+
+  //Java调用JS代码有参数
+
+  function javacalljsparam(param){
+
+  document.getElementById("content").innerHTML +=
+
+  "<br\>java调用了js函数含参数param"+param;
+
+  }
+
+ 
+
+
+ 
+
+
+  function testFunc(){
+
+ 
+
+
+  if(isAndroid){
+
+  <!--window.协定规范.方法名('第一个参数','第二个参数');-->
+
+  window.uoozi.jsCallWebView('方法第一个参数','方法第二个参数');
+
+ 
+
+
+  }else{
+
+ 
+
+
+  <!--window.webkit.messageHandlers.方法名.postMessage('参数')-->
+
+  window.webkit.messageHandlers.jsCallWebView.postMessage('我是参数ios');
+
+ 
+
+
+  }
+
+  <!--window.WebViewFunc.jsCallWebView();-->
+
+ 
+
+
+  }
+
+ 
+
+
+ </script>
+
+ </html>
