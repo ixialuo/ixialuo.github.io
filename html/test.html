@@ -16,11 +16,15 @@
 
  <div onClick="alert(1111)"><u>内部弹框</u></div>
 
+ <br/>
+
  <div onClick="testFunc()"><u>方法调用</u></div>
 
  <br/>
 
  <div onClick="window.uoozi.jsCallWebView('第一个参数','第二个参数')">android含参数调用java代码</div>
+
+ <br/>
 
  <div onClick="window.webkit.messageHandlers.appSetAlias.postMessage('我是ios参数')">ios含参数调用java代码</div>
 
@@ -107,7 +111,7 @@
   name: 'xialuo',
   type: 'YQL'
 };
-window.webkit.messageHandlers.appSetAlias.postMessage(JSON.stringify(_obj),'yinqingli');
+window.webkit.messageHandlers.appSetAlias.postMessage(JSON.stringify(_obj));
 
 //   window.webkit.messageHandlers.appSetAlias.postMessage('我是参数ios');
 
